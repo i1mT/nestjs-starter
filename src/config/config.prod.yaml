@@ -1,0 +1,27 @@
+env: production
+serverUrl: 'https://www.xxx.com'
+localFilePath: './SERVER_FILES'
+webPath: './web'
+enableHttps: true
+
+mongo:
+  user: root
+  password: 123456
+  host: 127.0.0.1
+  port: 27017
+  database: xxxx
+  authsource: xxxx
+
+mongo2:
+  user: user2
+  password: xxxxx
+  host: 47.122.2.54
+  port: 27017
+  database: database2
+  authsource: admin
+
+qiniu:
+  scope: 'bucket1'
+  host: 'https://img.xxx.com/'
+
+

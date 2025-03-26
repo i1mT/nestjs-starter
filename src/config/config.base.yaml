@@ -1,0 +1,8 @@
+qiniu:
+  ak: 'xxx'
+  sk: 'xxx'
+
+https:
+  ca: './src/assets/https/abc.com_chain.crt'
+  key: './src/assets/https/abc.com.key'
+  cert: './src/assets/https/abc.com_public.crt'

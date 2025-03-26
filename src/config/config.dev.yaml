@@ -1,0 +1,25 @@
+env: development
+serverUrl: 'http://localhost:8001'
+localFilePath: './SERVER_FILES'
+webPath: './web'
+enableHttps: false
+
+mongo:
+  user: root
+  password: 123456
+  host: 127.0.0.1
+  port: 27017
+  database: database1
+  authsource: admin
+
+mongo2:
+  user: root1
+  password: 123456
+  host: 127.0.0.1
+  port: 27017
+  database: database2
+  authsource: admin
+
+qiniu:
+  scope: 'bucket1'
+  host: 'http://img.xxx.com/'
