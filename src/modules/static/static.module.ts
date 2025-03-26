@@ -21,11 +21,11 @@ import * as path from "path";
     }),
     /**
      * 托管本地上传的文件资源
-     * 在 localFilePath 目录下的文件，可以在 serverRoot 的 /potato_picture 路径下访问
+     * 在 localFilePath 目录下的文件，可以在 serverRoot 的 /uploads 路径下访问
      */
     ServeStaticModule.forRoot({
       rootPath: config.get("localFilePath"),
-      serveRoot: "/potato_picture",
+      serveRoot: "/uploads",
     }),
   ],
   controllers: [StaticController],
