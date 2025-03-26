@@ -31,6 +31,7 @@ $ pnpm run start:prod
 
 ## Structure
 
+```
 └── src
     ├── common                          # 公共资源
     │   ├── constants                   # 常量
@@ -55,6 +56,7 @@ $ pnpm run start:prod
         └── user                        # 用户模块
             ├── dto
             └── interface
+```
 
 ## Feature
 
