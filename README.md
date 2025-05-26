@@ -70,9 +70,9 @@ then visite: `http://localhost:8002`
 使用 mongodb 数据库。使用步骤如下：
 1. 在 `config/config.*.yaml` 下配置数据库的 host、user、password 等信息。可参考 `config` 中的示例
 2. 在 `src/database/tables` 下定义表 Schema，导出一个 ITable 即可
-  a. 支持添加自增id，设置counter即可
+  - 支持添加自增id，设置counter即可
 3. 支持多数据库，见 `src/database/db.providers.ts` 中的配置
-  a. 使用多数据库时，在 table 中设置不同的 database provide 即可
+  - 使用多数据库时，在 table 中设置不同的 database provide 即可
 4. 支持自增id，在 `table` 中配置 `counterModel` 即可
 
 ## Feature
@@ -108,8 +108,8 @@ then visite: `http://localhost:8002`
 使用步骤如下：
 1. 在 `config/config.base.yaml` 下配置七牛云的 ak、sk
 2. 在 `config/config.(dev|prod).yaml` 下配置 scope、host
-  a. scope: 对应的bucket名
-  b. host: 文件 cdn 的域名
+  - scope: 对应的bucket名
+  - host: 文件 cdn 的域名
 3. 调用 `src/common/libs/qiniu` 中封装的 `uploadFile()` 上传即可
 
 ### Docker Deploy
@@ -126,7 +126,7 @@ then visite: `http://localhost:8002`
 
 # TODO
 
-[x] 支持 swagger
-[x] swagger 生成前端fetch模板代码的方案，提供文档
-[] 日志保存
-[] 服务监控
+- [x] 支持 swagger
+- [x] swagger 生成前端fetch模板代码的方案，提供文档
+- [ ] 日志保存
+- [ ] 服务监控
