@@ -19,8 +19,6 @@ export class ResponseInterceptor implements NestInterceptor {
     const request = ctx.getRequest();
 
     return {
-      status: true,
-      path: request.url,
       statusCode: response.statusCode,
       data: res,
     };
@@ -39,11 +37,8 @@ export class ResponseInterceptor implements NestInterceptor {
     console.error(exception);
 
     response.status(status).json({
-      status: false,
       statusCode: status,
-      path: request.url,
       message: exception.message,
-      result: exception,
     });
   }
 

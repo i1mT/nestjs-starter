@@ -6,7 +6,7 @@ import { AuthModule } from "./modules/auth/auth.module";
 import { JwtAuthGuard } from "./modules/auth/jwt-auth.guard";
 import { PROVIDERS } from "./common/constants";
 import { DatabaseModule } from "./database/db.module";
-
+import { TodoListModule } from "./modules/todo-list/todo-list.module";
 @Module({
   imports: [
     AuthModule, // 鉴权模块
@@ -14,6 +14,7 @@ import { DatabaseModule } from "./database/db.module";
     UserModule, // 用户模块
     StaticModule, // 静态资源模块，包含静态资源文件的托管
     DatabaseModule, // 数据库模块，包含数据库的连接、表定义
+    TodoListModule, // 待办事项模块
   ],
   controllers: [],
   providers: [

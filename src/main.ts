@@ -1,6 +1,7 @@
 import * as bodyParser from "body-parser";
 import { NestFactory } from "@nestjs/core";
 import { ResponseInterceptor } from "@/common/interceptor/response.interceptor";
+import { SwaggerModule, DocumentBuilder } from "@nestjs/swagger";
 import * as fs from "fs";
 import { AppModule } from "./app.module";
 import { config } from "./config";
@@ -37,6 +38,21 @@ async function bootstrap() {
   server.setTimeout(1000 * 60 * 3); // timeout 3 minutes
 
   const isProd = config.get("env") !== "development";
+
+  if (!isProd) {
+    // 测试环境，生成 swagger
+    const swaggerConfig = new DocumentBuilder()
+      .setTitle("My Server")
+      .setDescription("my Server API description")
+      .setVersion("1.0")
+      .addTag("my")
+      .build();
+    const document = SwaggerModule.createDocument(app, swaggerConfig);
+    // 保存 openapi.json 到本地文件，可以用于导入到postman/apifox等软件
+    // 或者前端用于生成 fetch 请求的模板代码
+    fs.writeFileSync("src/assets/open-api/my_server.openapi.json", JSON.stringify(document));
+    SwaggerModule.setup("swagger", app, () => document);
+  }
 
   await app.listen(isProd ? 6003 : 8002);
 }

@@ -15,6 +15,6 @@ export interface ITable {
 
 export const tablesConfig: ITable[] = [
   counterTable,
-  // counter2Table,
+  // counter2Table, // 数据库2 的 counter 表
   userTable,
 ];
