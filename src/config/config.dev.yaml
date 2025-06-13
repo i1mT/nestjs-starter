@@ -2,7 +2,9 @@ env: development
 serverUrl: 'http://localhost:8001'
 localFilePath: './SERVER_FILES'
 webPath: './web'
-enableHttps: false
+
+feature:
+  https: false
 
 mongo:
   user: root

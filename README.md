@@ -92,11 +92,11 @@ then visite: `http://localhost:8002`
 ### Swagger
 
 1. 在 `main.ts` 中配置了 `swagger` 生成
-2. 访问 localhost:8002/swagger 查看网页版接口定义
-3. 生成了 [openapi](https://swagger.io/specification/) 规范的接口定义文件，保存在 `src/assets/open-api/my_server.openapi.json`
+2. 访问 [localhost:8002/swagger](localhost:8002/swagger) 查看接口定义
+3. dev环境下，生成了 [openapi](https://swagger.io/specification/) 规范的接口定义文件，保存在 `src/assets/open-api/my_server.openapi.json`
 4. `swagger` 描述 `example` 可以参考 `src/modules/user/user.controller.ts`
 5. 针对分页、泛型等场景，提供了对应的装饰器，定义：`src/common/decorator/swagger`，使用：`src/modules/todo-list/todo-list.controller.ts`
-6. 对于生成的 openapi.json 文件，可以很方便地在前端使用。例如：hey-api，官网[使用教程](https://heyapi.dev/openapi-ts/get-started)
+6. 对于生成的 openapi.json 文件，可以很方便地在前端用于生成ts类型定义，fetch 代码等。例如：hey-api，官网[使用教程](https://heyapi.dev/openapi-ts/get-started)
 
 ### web 静态文件托管
 
@@ -121,12 +121,12 @@ then visite: `http://localhost:8002`
 ### HTTPS
 
 1. 证书文件保存在 `src/assets/https` 文件夹下
-2. 可以在 `config` 中配置 `enableHttps` 来开启或关闭 https
+2. 可以在 `config` 中配置 `feature.https` 来开启或关闭 https
 3. https 具体逻辑在 `main.ts` 中
 
 # TODO
 
 - [x] 支持 swagger
 - [x] swagger 生成前端fetch模板代码的方案，提供文档
-- [ ] 日志保存
-- [ ] 服务监控
+- [ ] PM2 部署支持
+- [ ] Prometheus 服务监控数据上报

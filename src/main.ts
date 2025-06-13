@@ -8,19 +8,24 @@ import { config } from "./config";
 
 async function bootstrap() {
   process.env.TZ = "Asia/Shanghai";
-  // https
+ 
+  const enableHttps = config.get("feature.https");
+  
+  const options = {
+    httpsOptions: undefined,
+  };
+  if (enableHttps) {
+     // https
   const sslCa = fs.readFileSync(config.get("https.ca"), "utf8");
   const sslCert = fs.readFileSync(config.get("https.cert"), "utf8");
   const sslKey = fs.readFileSync(config.get("https.key"), "utf8");
-  const enableHttps = config.get("enableHttps");
-  const httpsOptions = {
+  options.httpsOptions = {
     ca: sslCa,
     key: sslKey,
     cert: sslCert,
   };
-  const app = await NestFactory.create(AppModule, {
-    httpsOptions: enableHttps ? httpsOptions : undefined,
-  });
+  }
+  const app = await NestFactory.create(AppModule, options);
 
   // 设置全局前缀
   app.setGlobalPrefix("api");
@@ -54,7 +59,7 @@ async function bootstrap() {
     SwaggerModule.setup("swagger", app, () => document);
   }
 
-  await app.listen(isProd ? 6003 : 8002);
+  await app.listen(3002);
 }
 
 bootstrap();

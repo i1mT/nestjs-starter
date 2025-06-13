@@ -11,12 +11,19 @@ import {
 } from '@nestjs/common';
 import { Observable, catchError, map, throwError } from 'rxjs';
 
+/**
+ * 响应拦截器，用于统一处理响应数据
+ */
 @Injectable()
 export class ResponseInterceptor implements NestInterceptor {
   private responseHandler(res: any, context: ExecutionContext) {
     const ctx = context.switchToHttp();
     const response = ctx.getResponse();
     const request = ctx.getRequest();
+
+    if (request.url.startsWith("/api/metrics")) {
+      return res;
+    }
 
     return {
       statusCode: response.statusCode,
