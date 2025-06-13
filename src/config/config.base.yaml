@@ -6,3 +6,7 @@ https:
   ca: './src/assets/https/abc.com_chain.crt'
   key: './src/assets/https/abc.com.key'
   cert: './src/assets/https/abc.com_public.crt'
+
+aliyun:
+  bailian:
+    sk: 'sk-8952ff5eb06f4590921d596b0c1a727a'

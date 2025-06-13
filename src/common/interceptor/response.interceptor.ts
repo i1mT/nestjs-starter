@@ -1,6 +1,3 @@
-/*
-https://docs.nestjs.com/interceptors#interceptors
-*/
 import {
   CallHandler,
   ExecutionContext,
@@ -9,19 +6,30 @@ import {
   Injectable,
   NestInterceptor,
 } from '@nestjs/common';
+import { Reflector } from '@nestjs/core';
 import { Observable, catchError, map, throwError } from 'rxjs';
+import { IS_PLAIN_TEXT_KEY } from '../decorator/setMetadata';
 
 /**
  * 响应拦截器，用于统一处理响应数据
  */
 @Injectable()
 export class ResponseInterceptor implements NestInterceptor {
+
+  constructor(private reflector: Reflector) {}
+
   private responseHandler(res: any, context: ExecutionContext) {
     const ctx = context.switchToHttp();
     const response = ctx.getResponse();
     const request = ctx.getRequest();
 
-    if (request.url.startsWith("/api/metrics")) {
+    const isPlainText = this.reflector.getAllAndOverride<boolean>(IS_PLAIN_TEXT_KEY, [
+      context.getHandler(),
+      context.getClass(),
+    ]);
+    if (isPlainText || 
+      request.url.startsWith("/api/metrics")
+    ) {
       return res;
     }
 

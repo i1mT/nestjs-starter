@@ -30,7 +30,7 @@ async function bootstrap() {
   // 设置全局前缀
   app.setGlobalPrefix("api");
   // 设置全局拦截器
-  app.useGlobalInterceptors(new ResponseInterceptor());
+  app.useGlobalInterceptors(app.get(ResponseInterceptor));
   // 设置跨域
   app.enableCors({
     origin: "*",
